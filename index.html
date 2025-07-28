@@ -1,0 +1,577 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TLI Connect — Master the Global Stage</title>
+  <meta name="description" content="TLI Connect — Language × Culture × Business membership. Scenario‑based courses, workshops, and a cross‑cultural community backed by TLI since 1956." />
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      /* Layout */
+      --container: 1200px;
+      --r32: 32px;
+
+      /* Palette — 輕藍 × 黃 */
+      /* Page backgrounds */
+      --black: #F5F8FC;          /* 原做為整頁底色，改成極淺藍 */
+      --black-900: #103A63;      /* 深藍，用於 filmstrip 區塊底 */
+      --paper: #FFFFFF;          /* 主要卡片／Hero 底色 */
+      --paper-soft: #F9FBFE;     /* 柔和卡片底 */
+
+      /* Text */
+      --ink: #102335;            /* 主要文字深藍灰 */
+      --ink-dim: #6A7A8A;        /* 次要文字 */
+
+      /* Lines */
+      --divider: rgba(16,35,53,.14);
+
+      /* Accents */
+      --gold: #F2C14E;           /* 亮黃（主 CTA 與重點） */
+      --gold-strong: #E4B43B;    /* hover */
+
+      /* States */
+      --error: #D54848;
+      --success: #1CA87A;
+
+      /* 補充（若需） */
+      --blue-500: #2E6EB6;       /* 行銷文案標色／強調 */
+      --blue-100: #E9F2FF;       /* 很淺的藍色背景 */
+    }
+    *,*::before,*::after{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{font-family:Inter, "Noto Sans", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif; color:var(--ink); background:var(--black)}
+    a{text-decoration:none; color:#1E60A9}
+    img{max-width:100%; display:block}
+    .container{max-width:var(--container); margin:0 auto; padding:0 24px}
+    .section{padding:88px 0}
+    @media (max-width:767px){.section{padding:64px 0}}
+
+    h1,h2,h3{margin:0 0 16px; color:var(--ink); font-family:"Plus Jakarta Sans", "Noto Sans TC", Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; font-feature-settings:"pnum" 1, "lnum" 1; font-weight:800}
+    .h1{font-size:56px; line-height:64px; font-weight:800; letter-spacing:-0.015em}
+    .h2{font-size:34px; line-height:42px; font-weight:800; letter-spacing:-0.01em}
+    .h3{font-size:22px; line-height:30px; font-weight:800; letter-spacing:-0.01em}
+    .body-l{font-size:18px; line-height:28px; color:var(--ink)}
+    .body-m{font-size:16px; line-height:26px; color:var(--ink-dim)}
+    .label{font-size:14px; line-height:20px; font-weight:600; color:var(--ink)}
+    .caption{font-size:12px; line-height:18px; color:var(--ink-dim)}
+    @media (max-width:1100px){.h1{font-size:44px; line-height:52px} .h2{font-size:30px; line-height:38px}}
+
+    /* Header */
+    .site-header{position:sticky; top:0; z-index:20; background:linear-gradient(to bottom, rgba(255,255,255,.86), rgba(255,255,255,.75)); backdrop-filter:blur(8px); border-bottom:1px solid var(--divider)}
+    .site-header .inner{display:flex; align-items:center; height:72px}
+    .brand-logo{display:inline-flex; align-items:center; gap:12px}
+    .brand-logo img{height:36px; width:auto; display:block}
+    @media (max-width:767px){.brand-logo img{height:30px}}
+    .brand{font-weight:800; letter-spacing:.01em; color:var(--ink)}
+
+    /* HERO：標題左、表單右 */
+    .hero{background:linear-gradient(180deg, #FFFFFF 0%, #F7FAFE 60%, #F5F8FC 100%)}
+    .hero-grid{display:block}
+    .hero-inline{display:grid; grid-template-columns:minmax(0,1fr) 440px; gap:32px; align-items:start}
+    @media (max-width:992px){.hero-inline{grid-template-columns:1fr; gap:28px}}
+    .hero-copy .tagline{color:#7FA8D8}
+    .badge{display:inline-block; padding:6px 12px; border:1px solid var(--blue-500); border-radius:999px; font-size:14px; color:var(--blue-500); margin:20px 0; background:#F0F6FF}
+    .hero-bullets{margin-top:24px}
+    @media (max-width:1200px){.hero-grid{grid-template-columns:1fr; gap:32px}}
+
+    /* Form */
+    .card-form{background:var(--paper); border:1px solid var(--divider); border-radius:var(--r32); box-shadow:0 10px 30px rgba(16,58,99,.06); padding:32px}
+    .form-grid{display:grid; grid-template-columns:1fr; gap:16px}
+    input[type="text"],input[type="email"],input[type="tel"]{height:52px; border:1px solid var(--divider); border-radius:16px; padding:0 16px; font-size:16px; color:var(--ink); background:#FFFFFF; outline:none}
+    input::placeholder{color:#98A6B3}
+    input:focus{border-color:var(--blue-500); box-shadow:0 0 0 3px rgba(46,110,182,.18)}
+    .btn{height:56px; border:none; border-radius:999px; background:var(--gold); color:#1E2328; font-size:16px; font-weight:700; cursor:pointer; box-shadow:0 10px 24px rgba(242,193,78,.22)}
+    .btn:hover{background:var(--gold-strong)}
+    .error-msg{display:none; color:var(--error); font-size:12px; margin-top:6px}
+    .success{display:none; border-left:4px solid var(--success); background:rgba(28,168,122,.08); color:#0F7F5F; padding:12px 16px; border-radius:12px; margin-top:16px; font-size:14px}
+    .fail{display:none; border-left:4px solid var(--error); background:rgba(213,72,72,.08); color:#B04343; padding:12px 16px; border-radius:12px; margin-top:16px; font-size:14px}
+
+    /* Filmstrip */
+    .filmstrip{height:200px; background:var(--black-900); overflow:hidden; border-top:1px solid var(--divider); border-bottom:1px solid var(--divider)}
+    .filmstrip .row{display:grid; grid-template-columns:repeat(6, 1fr); gap:0; height:100%; width:100vw; margin-left:calc(50% - 50vw)}
+    .tile{position:relative; overflow:hidden}
+    .tile img{width:100%; height:100%; object-fit:cover; filter:grayscale(6%) contrast(1.03) saturate(0.96)}
+    .tile::after{content:""; position:absolute; inset:0; background:linear-gradient(0deg, rgba(16,35,53,.18), rgba(16,35,53,.18))}
+    @media (max-width:767px){.filmstrip{height:140px}}
+
+    /* Numbers */
+    .numbers{background:#EFF5FC}
+    .num-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:24px; text-align:center}
+    .num{font-size:44px; line-height:52px; font-weight:800; color:#2E6EB6; letter-spacing:-0.015em; font-feature-settings:"pnum" 1, "lnum" 1}
+    @media (max-width:767px){.num-grid{grid-template-columns:1fr}}
+
+    /* Why */
+    .why{background:linear-gradient( to bottom, #F6F9FE, #F2F6FB)}
+    .why-rows{display:grid; gap:24px; margin-top:40px}
+    .why-item{display:grid; grid-template-columns:1fr 1fr; gap:24px; border:1px solid var(--divider); border-radius:24px; background:#FFFFFF; padding:28px}
+    .why-tag{display:inline-block; font-size:12px; letter-spacing:.04em; text-transform:uppercase; border-radius:999px; padding:4px 10px; margin-bottom:12px}
+    .why-tag.pain{border:1px solid var(--blue-500); color:var(--blue-500); background:#E9F2FF}
+    .why-tag.solution{background:var(--gold); color:#1E2328; font-weight:800}
+    @media (max-width:1024px){.why-item{grid-template-columns:1fr}}
+
+    /* Topics */
+    .topics{background:#F7FAFE}
+    .topics-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:40px; margin-top:24px}
+    .topic-card{display:flex; flex-direction:column; gap:12px}
+    .topic-icon{width:56px; height:56px; border-radius:16px; background:#FFFFFF; border:1px solid var(--divider); display:grid; place-items:center; box-shadow:0 6px 16px rgba(16,58,99,.06)}
+    .topic-title{font-size:24px; line-height:32px; font-weight:700; color:var(--ink)}
+    .topic-desc{font-size:16px; line-height:26px; color:var(--ink-dim)}
+    @media (max-width:1024px){.topics-grid{grid-template-columns:1fr}}
+    .stroke{stroke:#2E6EB6;} .fill{fill:#2E6EB6;}
+
+    /* Bands */
+    .band{position:relative; padding:64px 0; background:radial-gradient(circle at 50% 0%, rgba(46,110,182,.06), rgba(0,0,0,0) 60%)}
+    .band::after{content:""; position:absolute; inset:0; pointer-events:none}
+    .band--3::after{background:linear-gradient(to right, transparent calc(33.333% - .5px), rgba(16,35,53,.08) 33.333%, transparent calc(33.333% + .5px), transparent calc(66.666% - .5px), rgba(16,35,53,.08) 66.666%, transparent calc(66.666% + .5px)); opacity:.25}
+    .band--5::after{background:linear-gradient(to right,
+      transparent calc(20% - .5px), rgba(16,35,53,.08) 20%, transparent calc(20% + .5px),
+      transparent calc(40% - .5px), rgba(16,35,53,.08) 40%, transparent calc(40% + .5px),
+      transparent calc(60% - .5px), rgba(16,35,53,.08) 60%, transparent calc(60% + .5px),
+      transparent calc(80% - .5px), rgba(16,35,53,.08) 80%, transparent calc(80% + .5px)); opacity:.25}
+    .subhead{font-size:18px; line-height:28px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:#2E6EB6}
+
+    /* Features grid（若未使用，保留樣式） */
+    .features-grid{display:grid; gap:40px}
+    .features-grid--5{grid-template-columns:repeat(5,1fr)}
+    @media (max-width:1200px){.features-grid--5{grid-template-columns:repeat(3,1fr)}}
+    @media (max-width:767px){.features-grid--5{grid-template-columns:1fr}}
+    .feature{display:flex; flex-direction:column; gap:12px}
+    .feature h3{font-size:24px; line-height:32px; font-weight:700; margin:0}
+    .feature p{margin:0; color:var(--ink-dim)}
+    .badge-mini{display:inline-block; border:1px solid var(--divider); border-radius:999px; padding:4px 10px; font-size:12px; color:var(--ink-dim); margin-top:4px}
+
+    /* Learn split */
+    .learn-split{position:relative; display:grid; grid-template-columns:560px minmax(0,1fr); gap:40px; align-items:start}
+    .learn-photo{position:relative; border-radius:28px; overflow:hidden; border:1px solid var(--divider); box-shadow:0 18px 40px rgba(16,58,99,.10); aspect-ratio:1/1; background:#0B0C0D}
+    .learn-photo img{width:100%; height:100%; object-fit:cover; display:block; filter:grayscale(6%) contrast(1.02) saturate(0.98)}
+    .learn-photo::after{content:""; position:absolute; inset:0; background:linear-gradient(to bottom, rgba(16,35,53,.10), rgba(16,35,53,.18))}
+    .learn-list{display:flex; flex-direction:column; gap:16px}
+    .learn-item{padding-bottom:14px; border-bottom:1px solid rgba(16,35,53,.12)}
+    .learn-item:last-child{border-bottom:none}
+    .learn-item button{all:unset; cursor:pointer; display:block}
+    .learn-item h3{font-size:18px; line-height:26px; font-weight:800; margin:0 0 6px; color:var(--ink)}
+    .learn-item p{margin:0 0 6px; color:var(--ink-dim); font-size:14px; line-height:22px}
+    .learn-badge{display:inline-block; border:1px solid var(--divider); border-radius:999px; padding:5px 10px; font-size:11px; color:#5B6D7E; background:#FFFFFF}
+    .learn-item.active h3{color:#2E6EB6}
+    .learn-item.active .learn-badge{border-color:#2E6EB6; color:#2E6EB6; background:#E9F2FF}
+    @media (max-width:900px){.learn-split{grid-template-columns:1fr; gap:24px}}
+
+    /* Cards */
+    .grid-5{display:grid; grid-template-columns:repeat(5,1fr); gap:24px}
+    @media (max-width:1024px){.grid-5{grid-template-columns:repeat(3,1fr)}}
+    @media (max-width:767px){.grid-5{grid-template-columns:1fr}}
+    .card{background:#FFFFFF; border:1px solid var(--divider); border-radius:24px; padding:28px; box-shadow:0 10px 30px rgba(16,58,99,.06)}
+    .card h3{color:var(--ink)}
+    .card p{color:var(--ink-dim)}
+    .badge-mini{display:inline-block; border:1px solid var(--divider); border-radius:999px; padding:4px 10px; font-size:12px; color:var(--ink-dim); margin-top:12px; background:#FFFFFF}
+
+    /* Redirect & Footer */
+    .redirect{background:linear-gradient(90deg, #F7FAFE, #FFFFFF); color:var(--ink); border-top:1px solid var(--divider); border-bottom:1px solid var(--divider); position:relative}
+    .redirect::before{content:""; position:absolute; inset:0; background:radial-gradient(90% 140% at 0% 50%, rgba(46,110,182,.15), rgba(255,255,255,0) 55%), radial-gradient(90% 140% at 100% 50%, rgba(242,193,78,.12), rgba(255,255,255,0) 55%); pointer-events:none}
+    .redirect .container{display:flex; align-items:center; justify-content:space-between; gap:24px; padding:40px 24px}
+    .redirect h3{margin:0; font-weight:800; letter-spacing:-.01em; font-size:28px; line-height:34px}
+    .redirect p{margin:6px 0 0; color:#49647B}
+    .redirect-cta{display:inline-flex; align-items:center; gap:10px; padding:16px 28px; border-radius:999px; background:var(--gold); color:#1E2328; font-weight:800; box-shadow:0 10px 30px rgba(242,193,78,.20); border:none}
+    .redirect-cta:hover{background:var(--gold-strong)}
+    .redirect-cta svg{flex:none}
+    @media (max-width:768px){.redirect .container{flex-direction:column; align-items:flex-start; gap:20px} .redirect h3{font-size:24px; line-height:30px}}
+
+    footer{background:linear-gradient(to top,#EDF3FA,#F7FAFE); border-top:1px solid var(--divider)}
+    .footer-card{max-width:none; margin:0 0 48px}
+    .footer-cta{display:grid; grid-template-columns:minmax(0,1fr) 600px; gap:48px; align-items:flex-start}
+    @media (max-width:992px){.footer-cta{grid-template-columns:1fr; gap:32px}}
+    .footer-copy h2{margin-bottom:16px}
+    .footer-copy p{margin:0}
+    .legal{border-top:1px solid var(--divider); padding:24px 0; color:#5F7180; font-size:14px}
+    .links,.social{display:flex; gap:16px; flex-wrap:wrap}
+    .footer-bottom{text-align:center}
+    .footer-bottom .footer-info{display:flex; width:100%; justify-content:center; align-items:center; gap:8px; flex-wrap:wrap; margin-bottom:10px; color:#5F7180; text-align:center}
+    .footer-bottom .links,.footer-bottom .social{justify-content:center}
+    .footer-bottom, .footer-bottom a{font-size:0.95rem}
+    .footer-bottom .legal{font-size:0.875rem; color:#64798A}
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="site-header" role="banner">
+    <div class="container inner">
+      <a class="brand brand-logo" href="#hero" aria-label="Taipei Language Institute"><img id="brandLogo"
+     src="https://drive.google.com/thumbnail?id=1-eMGYDEmR20U0q9CurC0Z49jW6aTUcgO&sz=w400"
+     srcset="https://drive.google.com/thumbnail?id=1-eMGYDEmR20U0q9CurC0Z49jW6aTUcgO&sz=w400 1x, https://drive.google.com/thumbnail?id=1-eMGYDEmR20U0q9CurC0Z49jW6aTUcgO&sz=w800 2x"
+     alt="Taipei Language Institute logo"
+     style="height:36px; width:auto;"/></a>
+    </div>
+  </header>
+  <!-- HERO -->
+  <section class="hero section" id="hero">
+    <div class="container hero-grid">
+      <div class="hero-inline">
+        <div class="hero-copy">
+          <h1 class="h1">Master the Global Stage — Join TLI Connect</h1>
+          <p class="body-l tagline">Language × Culture × Business — empowering tomorrow’s global talent.</p>
+          <span class="badge">Membership | 3‑Month / 1‑Year Plans</span>
+          <p class="body-m" style="margin-top:24px; color:#49647B">Since 1956, TLI has empowered learners worldwide.</p>
+        </div>
+        <div>
+          <div class="card-form" role="form" aria-labelledby="hero-form-title">
+            <h2 id="hero-form-title" class="h3" style="margin-bottom:12px; color:#2E6EB6">Talk to Us</h2>
+            <form id="heroForm" novalidate>
+              <div class="form-grid">
+                <div>
+                  <label class="label" for="hName">Name<span style="color:var(--gold)">*</span></label>
+                  <input id="hName" name="name" type="text" placeholder="Your name" required aria-required="true" />
+                  <div class="error-msg" id="hNameErr">Please enter your name.</div>
+                </div>
+                <div>
+                  <label class="label" for="hEmail">Email<span style="color:var(--gold)">*</span></label>
+                  <input id="hEmail" name="email" type="email" placeholder="you@example.com" required aria-required="true" />
+                  <div class="error-msg" id="hEmailErr">Please enter a valid email address.</div>
+                </div>
+                <div>
+                  <label class="label" for="hPhone">Phone <span class="caption" aria-hidden="true">(optional)</span></label>
+                  <input id="hPhone" name="phone" type="tel" placeholder="+886 912 345 678" />
+                  <div class="error-msg" id="hPhoneErr">Please enter numbers only or include + / - / ( ).</div>
+                </div>
+                <button class="btn" type="submit" aria-label="Submit contact form">Talk to Us</button>
+                <div class="caption">We’ll get back to you within 1–2 business days. Your information is kept strictly confidential.</div>
+                <div class="success" id="hSuccess">Thanks! We’ll contact you within 1–2 business days.</div>
+                <div class="fail" id="hFail">Sorry, something went wrong. Please try again later.</div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Filmstrip -->
+  <div class="filmstrip" aria-hidden="true">
+    <div class="row">
+      <div class="tile"><img src="https://images.unsplash.com/photo-1522199710521-72d69614c702?w=2000&auto=format&fit=crop&q=80" alt="Student with headphones learning from a video course on a laptop"/></div>
+      <div class="tile"><img src="https://images.unsplash.com/photo-1511578314322-379afb476865?w=2000&auto=format&fit=crop&q=80" alt="Black‑tie networking at an elegant venue"/></div>
+      <div class="tile"><img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=2000&auto=format&fit=crop&q=80" alt="Professional social gathering with cocktails"/></div>
+      <div class="tile"><img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=2000&auto=format&fit=crop&q=80" alt="Boardroom discussion and strategy meeting"/></div>
+      <div class="tile"><img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=2000&auto=format&fit=crop&q=80" alt="Remote collaboration and online call"/></div>
+      <div class="tile"><img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=2000&auto=format&fit=crop&q=80" alt="Small group workshop for language and culture"/></div>
+    </div>
+  </div>
+
+  <!-- Numbers -->
+  <section class="numbers section" aria-labelledby="num-title">
+    <div class="container">
+      <h2 id="num-title" class="h2">TLI Connect — The Digital Extension of TLI’s Legacy</h2>
+      <div class="num-grid" style="margin-top:40px">
+        <div>
+          <div class="num">Established<br>1956</div>
+          <p class="body-m">Taiwan’s pioneer language institute.</p>
+        </div>
+        <div>
+          <div class="num">600k+<br>Learners</div>
+          <p class="body-m">Served across business, academia &amp; NGOs.</p>
+        </div>
+        <div>
+          <div class="num">Global +<br>Digital</div>
+          <p class="body-m">On‑campus &amp; online, same quality standard.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why -->
+  <section class="why section" id="why" aria-labelledby="why-title">
+    <div class="container">
+      <h2 class="h2" id="why-title">Why Do You Need a Cross‑Cultural Learning Community?</h2>
+      <div class="why-rows">
+        <div class="why-item">
+          <div>
+            <span class="why-tag pain" aria-hidden="true">Pain</span>
+            <h3 class="h3">Training feels disconnected from work</h3>
+          </div>
+          <div>
+            <span class="why-tag solution" aria-hidden="true">Solution</span>
+            <p>Scenario‑based courses mirror real presentations, meetings, emails and negotiations.</p>
+          </div>
+        </div>
+        <div class="why-item">
+          <div>
+            <span class="why-tag pain" aria-hidden="true">Pain</span>
+            <h3 class="h3">No practice arena or peer circle</h3>
+          </div>
+          <div>
+            <span class="why-tag solution" aria-hidden="true">Solution</span>
+            <p>Monthly workshops &amp; networking sessions provide live practice and high‑quality connections.</p>
+          </div>
+        </div>
+        <div class="why-item">
+          <div>
+            <span class="why-tag pain" aria-hidden="true">Pain</span>
+            <h3 class="h3">Missing the cultural lens</h3>
+          </div>
+          <div>
+            <span class="why-tag solution" aria-hidden="true">Solution</span>
+            <p>Deep‑dive cultural cases decode unspoken rules so you avoid missteps and communicate confidently.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Topics -->
+  <section class="topics section" id="topics" aria-labelledby="topics-title">
+    <div class="container">
+      <h2 class="h2" id="topics-title">Language, Culture &amp; Business — All in One Membership</h2>
+      <p class="caption" style="margin-top:12px; color:#7FA8D8">Membership term: 3‑month or 1‑year. Same benefits — choose your pace.</p>
+
+      <h3 class="subhead" style="margin-top:40px">What you'll master</h3>
+      <div class="band band--3" style="margin-top:16px">
+        <div class="topics-grid" role="list">
+          <div class="topic-card" role="listitem">
+            <div class="topic-icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path class="stroke" d="M12 3C7.582 3 4 6.134 4 9.999c0 1.63.6 3.142 1.63 4.372l-.367 3.299 3.08-1.737C9.391 16.314 10.654 16.6 12 16.6c4.418 0 8-3.134 8-7.001C20 6.134 16.418 3 12 3Z" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                <path class="stroke" d="M15.5 7.75h-7M17 10.25H8.5" stroke-width="1.6" stroke-linecap="round"/>
+                <path class="stroke" d="M6.5 21.5l4.2-1.2 6.8-6.8a1.6 1.6 0 0 0 0-2.263v0a1.6 1.6 0 0 0-2.263 0L8.437 18.037 6.5 21.5Z" stroke-width="1.6" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="topic-title">Chinese Proficiency</div>
+            <div class="topic-desc">A0→B2 structured path: speak, write, present with ease.</div>
+          </div>
+          <div class="topic-card" role="listitem">
+            <div class="topic-icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path class="stroke" d="M12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9Z" stroke-width="1.6"/>
+                <path class="stroke" d="M3.5 12h17M12 3.5c2.5 2.5 2.5 14.5 0 17M8 5c1.2 1.6 1.8 5.4 1.8 7s-.6 5.4-1.8 7" stroke-width="1.6" stroke-linecap="round"/>
+                <path class="stroke" d="M21.5 18.5c-2.2 2.2-5.8 2.2-8 0 2.2-2.2 5.8-2.2 8 0Z" stroke-width="1.6" stroke-linejoin="round"/>
+                <circle class="stroke" cx="17.5" cy="18.5" r="1.2" stroke-width="1.6"/>
+              </svg>
+            </div>
+            <div class="topic-title">Cultural Insight</div>
+            <div class="topic-desc">Business etiquette &amp; local know‑how: read the subtext.</div>
+          </div>
+          <div class="topic-card" role="listitem">
+            <div class="topic-icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path class="stroke" d="M3.5 20.5h17" stroke-width="1.6" stroke-linecap="round"/>
+                <path class="stroke" d="M6 16l4-4 3 3 6-6" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                <path class="stroke" d="M16.5 7.5H20v3.5" stroke-width="1.6" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="topic-title">Business Firepower</div>
+            <div class="topic-desc">Presentations, negotiations, crisis emails: real‑world comms.</div>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="subhead" style="margin-top:48px">How you'll learn</h3>
+      <div class="band band--5" style="margin-top:16px">
+        <div class="learn-split" data-learn>
+          <div class="learn-photo">
+            <img id="learnPhoto" style="opacity:1" src="https://images.unsplash.com/photo-1522199710521-72d69614c702?w=2000&auto=format&fit=crop&q=80" alt="Student with headphones learning from a video course on a laptop"/>
+          </div>
+          <div class="learn-list" role="tablist" aria-label="Learning formats">
+            <div class="learn-item active" role="tab" aria-selected="true">
+              <button type="button" data-img="https://images.unsplash.com/photo-1522199710521-72d69614c702?w=2000&auto=format&fit=crop&q=80" data-alt="Student with headphones learning from a video course on a laptop">
+                <h3>Video Library</h3>
+                <p>400+ curated videos — learn anytime, anywhere</p>
+                <span class="learn-badge">400+ · 24/7</span>
+              </button>
+            </div>
+            <div class="learn-item" role="tab" aria-selected="false">
+              <button type="button" data-img="https://images.unsplash.com/photo-1587614382346-4ec70e388b28?w=2000&auto=format&fit=crop&q=80" data-alt="Zoom gallery view with approximately six participants and a shared whiteboard/notes">
+                <h3>Live Mini‑Classes</h3>
+                <p>45‑minute small‑group sessions, immediate feedback</p>
+                <span class="learn-badge">45m · small‑group</span>
+              </button>
+            </div>
+            <div class="learn-item" role="tab" aria-selected="false">
+              <button type="button" data-img="https://images.unsplash.com/photo-1511578314322-379afb476865?w=2000&auto=format&fit=crop&q=80" data-alt="Black‑tie networking at an elegant venue">
+                <h3>Events &amp; Workshops</h3>
+                <p>Networking &amp; themed workshops every month</p>
+                <span class="learn-badge">Monthly</span>
+              </button>
+            </div>
+            <div class="learn-item" role="tab" aria-selected="false">
+              <button type="button" data-img="https://images.unsplash.com/photo-1551836022-4c4c79ecde51?w=2000&auto=format&fit=crop&q=80" data-alt="Expert speaker delivering a session to professionals">
+                <h3>Expert Channels</h3>
+                <p>Cross‑discipline guest instructors, fresh content weekly</p>
+                <span class="learn-badge">Weekly</span>
+              </button>
+            </div>
+            <div class="learn-item" role="tab" aria-selected="false">
+              <button type="button" data-img="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=2000&auto=format&fit=crop&q=80" data-alt="Multicultural group chatting during a language exchange meetup">
+                <h3>Member Community</h3>
+                <p>Discussion forums &amp; language‑exchange groups</p>
+                <span class="learn-badge">24/7</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Redirect -->
+  <section class="redirect" aria-label="Corporate redirect">
+    <div class="container">
+      <div>
+        <h3>Looking for a team solution?</h3>
+        <p>Custom training, reporting, and admin tools for teams.</p>
+      </div>
+      <a class="redirect-cta" href="#" aria-label="Visit our corporate page">
+        <span>Visit our corporate page</span>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7" stroke="#1E2328" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer with Form -->
+  <footer class="section" id="footer" aria-labelledby="footer-title">
+    <div class="container">
+      <div class="footer-cta">
+        <div class="footer-copy">
+          <h2 class="h2" id="footer-title">Ready to Join TLI Connect?</h2>
+          <p class="body-m">Leave your info and we’ll send you full plan details within one business day.</p>
+        </div>
+        <div class="card-form footer-card" role="form" aria-labelledby="footer-title">
+          <form id="footerForm" novalidate>
+            <div class="form-grid">
+              <div>
+                <label class="label" for="fName">Name<span style="color:var(--gold)">*</span></label>
+                <input id="fName" name="name" type="text" placeholder="Your name" required />
+                <div class="error-msg" id="fNameErr">Please enter your name.</div>
+              </div>
+              <div>
+                <label class="label" for="fEmail">Email<span style="color:var(--gold)">*</span></label>
+                <input id="fEmail" name="email" type="email" placeholder="you@example.com" required />
+                <div class="error-msg" id="fEmailErr">Please enter a valid email address.</div>
+              </div>
+              <div>
+                <label class="label" for="fPhone">Phone <span class="caption" aria-hidden="true">(optional)</span></label>
+                <input id="fPhone" name="phone" type="tel" placeholder="+886 912 345 678" />
+                <div class="error-msg" id="fPhoneErr">Please enter numbers only or include + / - / ( ).</div>
+              </div>
+              <button class="btn" type="submit">Talk to Us</button>
+              <div class="caption">We’ll get back to you within 1–2 business days. Your information is kept strictly confidential.</div>
+              <div class="success" id="fSuccess">Thanks! We’ll contact you within 1–2 business days.</div>
+              <div class="fail" id="fFail">Sorry, something went wrong. Please try again later.</div>
+            </div>
+          </form>
+        </div></div>
+  <div class="footer-bottom-wrap">
+    <div class="container footer-bottom" style="max-width:var(--container); padding:0">
+        <div class="body-m footer-info">
+          <span>TLI Taipei Language Institute</span><span>|</span><a href="mailto:contact@tli1956.com" style="color:#1E60A9">contact@tli1956.com</a>
+        </div>
+        <div class="links body-m" style="margin-bottom:24px">
+          <a href="#">Privacy Policy</a><span>|</span><a href="#">Terms of Use</a>
+        </div>
+        <div class="social body-m" style="margin-bottom:8px">
+          <a href="#" aria-label="LinkedIn">LinkedIn</a>
+          <a href="#" aria-label="YouTube">YouTube</a>
+          <a href="#" aria-label="Instagram">Instagram</a>
+          <a href="#" aria-label="Facebook">Facebook</a>
+        </div>
+        <div class="legal">© TLI Taipei Language Institute. All rights reserved.</div>
+    </div>
+  </div>
+  </footer>
+
+  <script>
+    function validEmail(v){return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)}
+    function validPhone(v){if(!v) return true; return /^[0-9+\-()\s]+$/.test(v)}
+    function wire(formId, scope){
+      const form=document.getElementById(formId); if(!form) return;
+      form.addEventListener('submit', function(e){
+        e.preventDefault();
+        const name=form.querySelector('[name="name"]');
+        const email=form.querySelector('[name="email"]');
+        const phone=form.querySelector('[name="phone"]');
+        const nameErr=document.getElementById(scope+'NameErr');
+        const emailErr=document.getElementById(scope+'EmailErr');
+        const phoneErr=document.getElementById(scope+'PhoneErr');
+        const success=document.getElementById(scope+'Success');
+        const fail=document.getElementById(scope+'Fail');
+        [nameErr,emailErr,phoneErr,success,fail].forEach(el=>{if(el) el.style.display='none'});
+        let ok=true;
+        if(!name.value.trim()){nameErr && (nameErr.style.display='block'); ok=false}
+        if(!validEmail(email.value.trim())){emailErr && (emailErr.style.display='block'); ok=false}
+        if(!validPhone(phone.value.trim())){phoneErr && (phoneErr.style.display='block'); ok=false}
+        if(!ok) return;
+        const btn=form.querySelector('button[type="submit"]'); const old=btn.textContent; btn.disabled=true; btn.textContent='Submitting...';
+        setTimeout(()=>{success && (success.style.display='block'); form.reset(); btn.disabled=false; btn.textContent=old;}, 700);
+      });
+    }
+    wire('heroForm','h');
+    wire('footerForm','f');
+
+    // Learn photo switcher — square image, no equalize needed
+    (function(){
+      const split=document.querySelector('[data-learn]');
+      if(!split) return;
+      const img=split.querySelector('#learnPhoto');
+      const items=[...split.querySelectorAll('.learn-item')];
+      items.forEach(item=>{
+        const btn=item.querySelector('button');
+        btn.addEventListener('click',()=>{
+          items.forEach(it=>{it.classList.remove('active'); it.setAttribute('aria-selected','false');});
+          item.classList.add('active'); item.setAttribute('aria-selected','true');
+          const src=btn.getAttribute('data-img'); const alt=btn.getAttribute('data-alt')||'';
+          if(src){
+            img.style.opacity='0';
+            setTimeout(()=>{
+              img.alt = alt;
+              const tryUrl = (u)=>{ img.onerror=null; img.src=u; };
+              img.onerror = function(){
+                const ph = btn.getAttribute('data-placeholder');
+                if(ph){ img.onerror=null; img.src=ph; }
+              };
+              tryUrl(src);
+              img.style.opacity='1';
+            },160);
+          }
+        });
+      });
+    })();
+  </script>
+  <!-- Inject remote images for How you'll learn -->
+  <script>
+  (function(){
+    var MAP = {
+      "Video Library": "https://drive.google.com/thumbnail?id=1pOB4MjX3n7LatluDeIyeZwZL1-z5cKG5&sz=w1200",
+      "Live Mini‑Classes": "https://drive.google.com/thumbnail?id=1CE4zU_u102Tpuyd-kZ9VAyhtZ0URIYzG&sz=w1200",
+      "Events & Workshops": "https://drive.google.com/thumbnail?id=1-_uhVuBwguyXPCIhDzteaEyPxEryxMoX&sz=w1200",
+      "Expert Channels": "https://drive.google.com/thumbnail?id=1hJ21_PUWT5OpC6E0Rpro8q-oUDIjT61b&sz=w1200",
+      "Member Community": "https://drive.google.com/thumbnail?id=1l8DLNX95nMGx45fqMTvsa-f99zGMMN1z&sz=w1200"
+    };
+    var img=document.getElementById('learnPhoto');
+    if(img && MAP["Video Library"]) img.src = MAP["Video Library"];
+    document.querySelectorAll('[data-learn] .learn-item button').forEach(function(btn){
+      var title=(btn.querySelector('h3')||{}).textContent; if(!title) return;
+      title = title.trim();
+      if(MAP[title]){
+        btn.setAttribute('data-img', MAP[title]);
+      }
+      var cur = btn.getAttribute('data-img');
+      if(cur) btn.setAttribute('data-placeholder', cur);
+    });
+  })();
+  </script>
+  <script>
+    (function(){
+  var img = document.getElementById('brandLogo');
+  if (!img) return;
+  // 若未設置 src 或 srcset，提供備援值；已設置則尊重瀏覽器以 DPR 選擇的 currentSrc
+  if (!img.getAttribute('src')) {
+    img.setAttribute('src', 'https://drive.google.com/thumbnail?id=1-eMGYDEmR20U0q9CurC0Z49jW6aTUcgO&sz=w400');
+  }
+  if (!img.getAttribute('srcset')) {
+    img.setAttribute('srcset', 'https://drive.google.com/thumbnail?id=1-eMGYDEmR20U0q9CurC0Z49jW6aTUcgO&sz=w400 1x, https://drive.google.com/thumbnail?id=1-eMGYDEmR20U0q9CurC0Z49jW6aTUcgO&sz=w800 2x');
+  }
+})();
+  </script>
+</body>
+</html>
