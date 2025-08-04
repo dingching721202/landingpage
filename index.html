@@ -510,7 +510,34 @@
         if(!validPhone(phone.value.trim())){phoneErr && (phoneErr.style.display='block'); ok=false}
         if(!ok) return;
         const btn=form.querySelector('button[type="submit"]'); const old=btn.textContent; btn.disabled=true; btn.textContent='Submitting...';
-        setTimeout(()=>{success && (success.style.display='block'); form.reset(); btn.disabled=false; btn.textContent=old;}, 700);
+        
+        // Submit to webhook API
+        fetch('https://n8n-gphufbto.ap-southeast-1.clawcloudrun.com/webhook/leads', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            name: name.value.trim(),
+            email: email.value.trim()
+          })
+        })
+        .then(response => {
+          if (response.ok) {
+            success && (success.style.display='block');
+            form.reset();
+          } else {
+            throw new Error('Submission failed');
+          }
+        })
+        .catch(error => {
+          console.error('Error:', error);
+          fail && (fail.style.display='block');
+        })
+        .finally(() => {
+          btn.disabled=false; 
+          btn.textContent=old;
+        });
       });
     }
     wire('heroForm','h');
