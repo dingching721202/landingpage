@@ -257,8 +257,6 @@
 }
 
 
-
-
    .footer-cta-section {
   background: #F7FAFE;
   padding: 72px 0;
@@ -380,7 +378,162 @@
   }
 }
 
+/* 1) Hero padding / 標題縮小 */
+@media (max-width: 767px) {
+  #hero { padding: 72px 16px !important; }
+  .hero-text-box { padding: 20px 16px; border-radius: 12px; }
+  .h1 { font-size: 32px; line-height: 40px; }
+  .hero-bg { background-position: 50% 35%; }
+}
 
+/* 2) Hero 表單：平板先允許換行，手機改直式堆疊 */
+@media (max-width: 1024px) {
+  .hero-form-card { border-radius: 20px; top: 16px; padding: 16px; }
+  .horizontal-form.center-form { flex-wrap: wrap; gap: 12px; }
+  .h-field { flex: 1 1 260px; min-width: 0; }
+}
+@media (max-width: 768px) {
+  .horizontal-form.center-form { flex-direction: column; align-items: stretch; }
+  .h-field { width: 100%; margin: 0; }
+  .horizontal-form .btn { width: 100%; align-self: stretch; }
+}
+
+/* 3) 五張歷史照片 + caption：桌機 5 欄 → 平板 3 欄 → 手機 2 欄 */
+@media (max-width: 1024px) {
+  .filmstrip-row, .caption-row { grid-template-columns: repeat(3, 1fr); }
+  .filmstrip-row img { height: 150px; }
+}
+@media (max-width: 640px) {
+  .filmstrip-row, .caption-row { grid-template-columns: repeat(2, 1fr); }
+  .filmstrip-row img { height: 120px; }
+}
+
+/* 4) Numbers 三欄收斂 */
+@media (max-width: 900px)  { .num-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px)  {
+  .num-grid { grid-template-columns: 1fr; text-align: left; }
+  .num { font-size: 28px; }
+}
+
+/* 5) Topics 標籤間距在手機不要那麼高 */
+@media (max-width: 768px) { .topic-label { margin-top: 28px; } }
+
+/* 6) 保險擋掉水平捲動（filmstrip 等計算誤差） */
+html, body { overflow-x: hidden; }
+
+/* 7) 超小螢幕標題換行 */
+@media (max-width: 360px) { .h1, .h2 { overflow-wrap: anywhere; word-break: break-word; } }
+
+/* 8) Redirect 文字顏色與底色分離，避免對比問題（若保留 inline color 可加 !important） */
+.redirect { color: #14263F; }
+.redirect h3 { color: #14263F; }
+.redirect p  { color: #49647B; }
+@media (max-width: 768px) { .redirect .container { padding: 28px 24px; } }
+
+/* 卡片不要上移＋圓角回正常，避免內容被裁 */
+#hero .hero-form-card{
+  top: 0;
+  margin-top: 12px;
+  padding: 16px;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+/* 用 Grid（不是 flex）排版：桌機 3 欄輸入 + 1 欄按鈕 */
+#heroForm.horizontal-form.center-form{
+  max-width: 100% !important;            /* 解除原本 900px 限制 */
+  display: grid !important;               /* 強制改用 grid */
+  grid-template-columns:
+    minmax(220px,1fr)                     /* Name */
+    minmax(220px,1fr)                     /* Email */
+    minmax(220px,1fr)                     /* Phone */
+    minmax(160px,auto);                   /* Button */
+  column-gap: 12px;
+  row-gap: 12px;
+  align-items: end;
+  padding: 0;
+  border: 0;
+  box-shadow: none;
+}
+
+/* 修掉舊 flex 設定的副作用（邊距/對齊） */
+#heroForm .h-field{ min-width: 0; margin: 0; }
+#heroForm .btn{
+  align-self: stretch !important;         /* 蓋掉舊的 align-self:flex-end */
+  height: 52px;
+  white-space: nowrap;
+}
+
+/* 1180px 以下：改成兩欄輸入，按鈕獨佔一列滿版 */
+@media (max-width: 1180px){
+  #heroForm.horizontal-form.center-form{
+    grid-template-columns: minmax(220px,1fr) minmax(220px,1fr);
+  }
+  #heroForm .btn{
+    grid-column: 1 / -1;
+    justify-self: stretch;
+  }
+}
+
+/* 900px 以下：卡片縮小內距 */
+@media (max-width: 900px){
+  #hero .hero-form-card{ padding: 14px; border-radius: 16px; }
+}
+
+/* 768px 以下：單欄直排，按鈕滿版 */
+@media (max-width: 768px){
+  #hero{ padding: 64px 16px !important; }
+  #heroForm.horizontal-form.center-form{ grid-template-columns: 1fr; }
+  #heroForm .btn{ grid-column: 1 / -1; width: 100%; }
+}
+
+/* 極小螢幕：避免 placeholder 撐寬、避免 iOS 放大 */
+#heroForm .h-input{ min-width: 0; font-size:16px; height:46px; }
+#heroForm .h-label{ font-size:12px; }
+
+/* 手機上方文字卡片收斂一下 */
+@media (max-width: 768px){
+  .hero-text-box{ padding: 18px 14px; border-radius: 12px; }
+  .h1{ font-size: 30px; line-height: 38px; }
+}
+
+/* 用 Grid 取代 flex-wrap，避免按鈕「掉半格」或靠右對不齊 */
+.footer-card .form-grid{
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0,1fr)); /* 桌機：3 欄輸入 */
+  gap: 24px;
+  align-items: end;
+}
+
+/* 解除舊設定造成的擠壓 */
+.footer-card .form-grid > div{ min-width: 0; }
+.footer-card .form-grid button{
+  grid-column: 3;               /* 與第三欄對齊 */
+  justify-self: end;
+  height: 52px;
+}
+
+/* 平板：2 欄，按鈕跨整列滿版 */
+@media (max-width: 1024px){
+  .footer-card .form-grid{
+    grid-template-columns: repeat(2, minmax(0,1fr));
+  }
+  .footer-card .form-grid button{
+    grid-column: 1 / -1;
+    justify-self: stretch;
+  }
+}
+
+/* 手機：單欄直排，按鈕 100% */
+@media (max-width: 768px){
+  .footer-card .form-grid{
+    grid-template-columns: 1fr;
+  }
+  .footer-card .form-grid button{
+    grid-column: 1 / -1;
+    width: 100%;
+  }
+}
 
   </style>
 </head>
@@ -910,7 +1063,7 @@
 </section> 
 
 <!-- Redirect -->
-<section class="redirect" aria-label="Corporate redirect"style="background-color: rgba(0, 159, 182, 0.1); color: white;">
+<section class="redirect" aria-label="Corporate redirect"style="background-color: rgba(0, 159, 182, 0.1);">
   <div class="container">
     <div>
       <h3>Need a Customized Corporate Training Solution?</h3>
