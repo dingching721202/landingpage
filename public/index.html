@@ -62,7 +62,7 @@
     @media (max-width:1100px){.h1{font-size:44px; line-height:52px} .h2{font-size:30px; line-height:38px}}
 
     /* Header */
-    .site-header{position:sticky; top:0; z-index:20; background:linear-gradient(to bottom, rgba(255,255,255,.86), rgba(255,255,255,.75)); backdrop-filter:blur(8px); border-bottom:1px solid var(--divider)}
+    .site-header{position:-webkit-sticky; position:sticky; top:0; left:0; right:0; z-index:9999; background:linear-gradient(to bottom, rgba(255,255,255,.95), rgba(255,255,255,.90)); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); border-bottom:1px solid var(--divider); width:100%; box-sizing:border-box}
     .site-header .inner{display:flex; align-items:center; height:72px}
     .brand-logo{display:inline-flex; align-items:center; gap:12px}
     .brand-logo img{height:36px; width:auto; display:block}
@@ -419,7 +419,7 @@
 @media (max-width: 768px) { .topic-label { margin-top: 28px; } }
 
 /* 6) 保險擋掉水平捲動（filmstrip 等計算誤差） */
-html, body { overflow-x: hidden; }
+body { overflow-x: hidden; }
 
 /* 7) 超小螢幕標題換行 */
 @media (max-width: 360px) { .h1, .h2 { overflow-wrap: anywhere; word-break: break-word; } }
