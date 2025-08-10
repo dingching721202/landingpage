@@ -1149,34 +1149,156 @@ body { overflow-x: hidden; }
 
 
 <script>
-  // Hero 區
-  document.getElementById('heroForm').addEventListener('submit', function (e) {
+  // API endpoint
+  const API_ENDPOINT = 'https://n8n-gphufbto.ap-southeast-1.clawcloudrun.com/webhook/to_c_leads';
+
+  // Function to submit form data to API
+  async function submitToAPI(formData) {
+    console.log('Submitting to API:', formData);
+    try {
+      const response = await fetch(API_ENDPOINT, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+      });
+
+      console.log('API Response Status:', response.status);
+      
+      if (response.ok) {
+        const responseData = await response.text();
+        console.log('API Response:', responseData);
+        return { success: true };
+      } else {
+        const errorData = await response.text();
+        console.error('API Error Response:', errorData);
+        throw new Error(`HTTP ${response.status}: ${errorData}`);
+      }
+    } catch (error) {
+      console.error('API submission error:', error);
+      return { success: false, error: error.message };
+    }
+  }
+
+  // Hero Form
+  document.getElementById('heroForm').addEventListener('submit', async function (e) {
     e.preventDefault();
+    console.log('Hero form submitted!');
 
     const name = document.getElementById('hName').value.trim();
     const email = document.getElementById('hEmail').value.trim();
+    const phone = document.getElementById('hPhone').value.trim();
 
-    if (name && email) {
+    console.log('Form data:', { name, email, phone });
+
+    // Hide all messages first
+    document.getElementById('hSuccess').style.display = 'none';
+    document.getElementById('hFail').style.display = 'none';
+
+    // Basic validation
+    if (!name || !email) {
+      console.log('Validation failed: missing name or email');
+      document.getElementById('hFail').style.display = 'block';
+      return;
+    }
+
+    // Email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      console.log('Validation failed: invalid email format');
+      document.getElementById('hFail').style.display = 'block';
+      return;
+    }
+
+    // Show loading state
+    const submitBtn = this.querySelector('button[type="submit"]');
+    const originalText = submitBtn.textContent;
+    submitBtn.textContent = 'Sending...';
+    submitBtn.disabled = true;
+
+    // Prepare form data
+    const formData = {
+      name: name,
+      email: email,
+      phone: phone || ''
+    };
+
+    // Submit to API
+    const result = await submitToAPI(formData);
+
+    // Reset button
+    submitBtn.textContent = originalText;
+    submitBtn.disabled = false;
+
+    if (result.success) {
+      console.log('Form submission successful');
       document.getElementById('hSuccess').style.display = 'block';
-      document.getElementById('hFail').style.display = 'none';
+      // Clear form
+      document.getElementById('heroForm').reset();
     } else {
-      document.getElementById('hSuccess').style.display = 'none';
+      console.log('Form submission failed:', result.error);
       document.getElementById('hFail').style.display = 'block';
     }
   });
 
-  // Footer 區
-  document.getElementById('footerForm').addEventListener('submit', function (e) {
+  // Footer Form
+  document.getElementById('footerForm').addEventListener('submit', async function (e) {
     e.preventDefault();
+    console.log('Footer form submitted!');
 
     const name = document.getElementById('fName').value.trim();
     const email = document.getElementById('fEmail').value.trim();
+    const phone = document.getElementById('fPhone').value.trim();
 
-    if (name && email) {
+    console.log('Form data:', { name, email, phone });
+
+    // Hide all messages first
+    document.getElementById('fSuccess').style.display = 'none';
+    document.getElementById('fFail').style.display = 'none';
+
+    // Basic validation
+    if (!name || !email) {
+      console.log('Validation failed: missing name or email');
+      document.getElementById('fFail').style.display = 'block';
+      return;
+    }
+
+    // Email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      console.log('Validation failed: invalid email format');
+      document.getElementById('fFail').style.display = 'block';
+      return;
+    }
+
+    // Show loading state
+    const submitBtn = this.querySelector('button[type="submit"]');
+    const originalText = submitBtn.textContent;
+    submitBtn.textContent = 'Sending...';
+    submitBtn.disabled = true;
+
+    // Prepare form data
+    const formData = {
+      name: name,
+      email: email,
+      phone: phone || ''
+    };
+
+    // Submit to API
+    const result = await submitToAPI(formData);
+
+    // Reset button
+    submitBtn.textContent = originalText;
+    submitBtn.disabled = false;
+
+    if (result.success) {
+      console.log('Form submission successful');
       document.getElementById('fSuccess').style.display = 'block';
-      document.getElementById('fFail').style.display = 'none';
+      // Clear form
+      document.getElementById('footerForm').reset();
     } else {
-      document.getElementById('fSuccess').style.display = 'none';
+      console.log('Form submission failed:', result.error);
       document.getElementById('fFail').style.display = 'block';
     }
   });
