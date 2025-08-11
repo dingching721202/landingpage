@@ -433,7 +433,7 @@
 /* 1) Hero padding / 標題縮小 */
 @media (max-width: 767px) {
   #hero { padding: 72px 16px !important; }
-  .hero-text-box { padding: 12px 8px; border-radius: 12px; }
+  .hero-text-box { padding: 12px 8px; border-radius: 12px; margin-left: 0; }
   .h1 { font-size: 32px; line-height: 40px; }
   .hero-bg { background-position: 50% 35%; }
 }
@@ -545,7 +545,7 @@ body { overflow-x: hidden; }
 
 /* 手機上方文字卡片收斂一下 */
 @media (max-width: 768px){
-  .hero-text-box{ padding: 12px 8px; border-radius: 12px; }
+  .hero-text-box{ padding: 12px 8px; border-radius: 12px; margin-left: 0; }
   .h1{ font-size: 30px; line-height: 38px; }
 }
 
@@ -620,6 +620,10 @@ body { overflow-x: hidden; }
     padding: 0;
     position: relative;
     z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: left;
   }
   
   .hero-text-box {
@@ -630,7 +634,9 @@ body { overflow-x: hidden; }
     text-align: left;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
     margin-bottom: 20px;
-    max-width: 680px;
+    max-width: 600px;
+    align-self: flex-start;
+    margin-left: calc(50% - 560px);
   }
 
   /* Hero 表單卡片與 Footer 完全一致 */
@@ -638,6 +644,7 @@ body { overflow-x: hidden; }
     margin-top: 0;
     z-index: 2;
     position: relative;
+    align-self: center;
   }
 
   .hero-form-card {
