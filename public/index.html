@@ -433,7 +433,8 @@
 /* 1) Hero padding / 標題縮小 */
 @media (max-width: 767px) {
   #hero { padding: 72px 16px !important; }
-  .hero-text-box { padding: 12px 8px; border-radius: 12px; margin-left: 0; }
+  #hero .container { align-items: flex-start; }
+  .hero-text-box { padding: 12px 8px; border-radius: 12px; margin-left: 0; align-self: stretch; max-width: none; }
   .h1 { font-size: 32px; line-height: 40px; }
   .hero-bg { background-position: 50% 35%; }
 }
@@ -545,8 +546,10 @@ body { overflow-x: hidden; }
 
 /* 手機上方文字卡片收斂一下 */
 @media (max-width: 768px){
-  .hero-text-box{ padding: 12px 8px; border-radius: 12px; margin-left: 0; }
+  #hero .container { align-items: flex-start; }
+  .hero-text-box{ padding: 12px 8px; border-radius: 12px; margin-left: 0; align-self: stretch; max-width: none; }
   .h1{ font-size: 30px; line-height: 38px; }
+  #hero .hero-form-card { align-self: stretch; }
 }
 
 
