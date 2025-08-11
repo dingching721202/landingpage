@@ -560,19 +560,16 @@ body { overflow-x: hidden; }
 <section class="hero section" id="hero" style="padding: 96px 60px; position: relative;">
   <div class="hero-bg"></div>
 
-  <div class="container hero-grid">
-    <div class="hero-content">
-      <div class="hero-text-box">
-        <span class="badge">Membership | 3‑Month / 1‑Year Plans</span>
-        <h1 class="h1">Break Language Barriers. Unlock Asian Markets.</h1>
-        <p class="body-l tagline">
-          Language × Culture × Business —<br>
-          Sharpen your skills alongside professionals worldwide and<br>
-          become the next generation of international leaders.
-        </p>
-      </div>
+  <div class="container hero-cta">
+    <div class="hero-text-box">
+      <span class="badge">Membership | 3‑Month / 1‑Year Plans</span>
+      <h1 class="h1">Break Language Barriers. Unlock Asian Markets.</h1>
+      <p class="body-l tagline">
+        Language × Culture × Business —<br>
+        Sharpen your skills alongside professionals worldwide and<br>
+        become the next generation of international leaders.
+      </p>
     </div>
-
     <div class="hero-form-card">
       <form id="heroForm" class="horizontal-form center-form" novalidate>
         <div class="h-field">
@@ -609,37 +606,27 @@ body { overflow-x: hidden; }
     transition: background 0.5s;
   }
 
-  .hero-grid {
-    max-width: var(--container);
-    margin: 0 auto;
-    padding: 0 24px;
+  /* Hero 區塊使用與 Footer 相同的結構和樣式 */
+  #hero .container {
+    padding: 0;
     position: relative;
     z-index: 2;
   }
-
+  
   .hero-text-box {
-    background: rgba(255, 255, 255, 0.7);
-    border: 1px solid rgba(255, 255, 255, 0.7);
+    background: rgba(255, 255, 255, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.5);
     padding: 20px 16px;
     border-radius: 16px;
     text-align: left;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
-    margin-left: 0;
-    margin-right: auto;
+    margin-bottom: 20px;
     max-width: 680px;
   }
 
-  .hero-content {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 12px;
-    padding-top: 1px;
-  }
-
-  /* 為 Hero 區塊的 form card 添加特殊定位 */
+  /* Hero 表單卡片與 Footer 完全一致 */
   #hero .hero-form-card {
-    margin-top: 20px;
+    margin-top: 0;
     z-index: 2;
     position: relative;
   }
