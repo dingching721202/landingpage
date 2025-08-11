@@ -526,26 +526,51 @@ body { overflow-x: hidden; }
   height: 44px;
 }
 
-/* 平板：2 欄，按鈕跨整列滿版 */
-@media (max-width: 1024px){
+/* 平板：2 欄，Phone和按鈕在第二行 */
+@media (max-width: 1024px) and (min-width: 769px){
   .footer-card .form-grid{
     grid-template-columns: repeat(2, minmax(0,1fr));
+    grid-template-rows: auto auto auto; /* 3 行 */
+  }
+  .footer-card .form-grid > div:nth-child(3) { /* Phone 欄位 */
+    grid-column: 1;
+    grid-row: 2;
   }
   .footer-card .form-grid button{
+    grid-column: 2;
+    grid-row: 2;
+    justify-self: end;
+  }
+  .footer-card .form-grid .caption{
     grid-column: 1 / -1;
-    justify-self: stretch;
+    grid-row: 3;
+    text-align: center;
   }
 }
 
-/* 手機：單欄直排，按鈕 100% */
+/* 手機：單欄直排，重新排序 */
 @media (max-width: 768px){
   .footer-card .form-grid{
     grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto auto auto; /* 5 行：Name, Email, Phone, 按鈕, 說明 */
   }
   .footer-card .form-grid button{
-    grid-column: 1 / -1;
+    grid-column: 1;
+    grid-row: 4;                  /* 第四行：按鈕 */
+    justify-self: stretch;
     width: 100%;
+    order: 4;
   }
+  .footer-card .form-grid .caption{
+    grid-column: 1;
+    grid-row: 5;                  /* 第五行：說明 */
+    text-align: center;
+    order: 5;
+  }
+  /* 確保輸入欄位順序 */
+  .footer-card .form-grid > div:nth-child(1) { order: 1; } /* Name */
+  .footer-card .form-grid > div:nth-child(2) { order: 2; } /* Email */
+  .footer-card .form-grid > div:nth-child(3) { order: 3; } /* Phone */
 }
 
   </style>
