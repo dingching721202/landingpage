@@ -573,29 +573,27 @@ body { overflow-x: hidden; }
       </div>
     </div>
 
-    <div class="hero-form-row">
-      <div class="hero-form-card">
-        <form id="heroForm" class="horizontal-form center-form" novalidate>
-          <div class="h-field">
-            <label for="hName" class="h-label">Name<span style="color:var(--gold)">*</span></label>
-            <input id="hName" name="name" type="text" placeholder="Your name" required aria-required="true" class="h-input" />
-          </div>
-          <div class="h-field">
-            <label for="hEmail" class="h-label">Email<span style="color:var(--gold)">*</span></label>
-            <input id="hEmail" name="email" type="email" placeholder="you@example.com" required aria-required="true" class="h-input" />
-          </div>
-          <div class="h-field">
-            <label for="hPhone" class="h-label">Phone <span class="caption" aria-hidden="true">(optional)</span></label>
-            <input id="hPhone" name="phone" type="tel" placeholder="+886 912 345 678" class="h-input" />
-          </div>
-          <button class="btn" type="submit" aria-label="Submit contact form">Free Consultation</button>
-        </form>
-        <div class="caption" style="margin: 12px 0 0 0; text-align:center;">
-          We'll get back to you within 1–2 business days.<br>Your information is kept strictly confidential.
+    <div class="hero-form-card">
+      <form id="heroForm" class="horizontal-form center-form" novalidate>
+        <div class="h-field">
+          <label for="hName" class="h-label">Name<span style="color:var(--gold)">*</span></label>
+          <input id="hName" name="name" type="text" placeholder="Your name" required aria-required="true" class="h-input" />
         </div>
-        <div class="success" id="hSuccess">Thank you for your submission! We’ll be in touch within 1–2 business days.</div>
-        <div class="fail" id="hFail">Sorry, something went wrong. Please try again later.</div>
+        <div class="h-field">
+          <label for="hEmail" class="h-label">Email<span style="color:var(--gold)">*</span></label>
+          <input id="hEmail" name="email" type="email" placeholder="you@example.com" required aria-required="true" class="h-input" />
+        </div>
+        <div class="h-field">
+          <label for="hPhone" class="h-label">Phone <span class="caption" aria-hidden="true">(optional)</span></label>
+          <input id="hPhone" name="phone" type="tel" placeholder="+886 912 345 678" class="h-input" />
+        </div>
+        <button class="btn" type="submit" aria-label="Submit contact form">Free Consultation</button>
+      </form>
+      <div class="caption" style="margin: 12px 0 0 0; text-align:center;">
+        We'll get back to you within 1–2 business days.<br>Your information is kept strictly confidential.
       </div>
+      <div class="success" id="hSuccess">Thank you for your submission! We'll be in touch within 1–2 business days.</div>
+      <div class="fail" id="hFail">Sorry, something went wrong. Please try again later.</div>
     </div>
   </div>
 
@@ -639,10 +637,8 @@ body { overflow-x: hidden; }
     padding-top: 1px;
   }
 
-  .hero-form-row {
-    width: 100%;
-    display: flex;
-    justify-content: center;
+  /* 為 Hero 區塊的 form card 添加特殊定位 */
+  #hero .hero-form-card {
     margin-top: 20px;
     z-index: 2;
     position: relative;
