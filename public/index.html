@@ -268,8 +268,103 @@
 
    .footer-cta-section {
   background: #F7FAFE;
-  padding: 72px 0;
+  padding: 96px 60px;
   border-top: 1px solid var(--divider);
+}
+
+.footer-cta-section .container {
+  padding: 0;  /* 移除 container 的預設 padding，讓它跟 hero section 一致 */
+}
+
+/* 響應式 padding 匹配 hero section */
+@media (max-width: 767px) {
+  .footer-cta-section { padding: 72px 16px !important; }
+}
+
+@media (max-width: 768px) {
+  .footer-cta-section { padding: 64px 16px !important; }
+}
+
+/* 確保下面表單的寬度跟上面一致 */
+#footerForm.horizontal-form.center-form{
+  max-width: 100% !important;            /* 解除原本 900px 限制 */
+  display: grid !important;               /* 強制改用 grid */
+  grid-template-columns:
+    minmax(220px,1fr)                     /* Name */
+    minmax(220px,1fr)                     /* Email */
+    minmax(220px,1fr)                     /* Phone */
+    minmax(160px,auto);                   /* Button */
+  column-gap: 12px;
+  row-gap: 12px;
+  align-items: end;
+  padding: 0;
+  border: 0;
+  box-shadow: none;
+}
+
+/* 修掉舊 flex 設定的副作用（邊距/對齊） */
+#footerForm .h-field{ min-width: 0; margin: 0; }
+#footerForm .btn{
+  align-self: end !important;             /* 置底對齊 */
+  height: 52px;
+  white-space: nowrap;
+}
+
+/* 1180px 以下：改成兩欄輸入，按鈕獨佔一列滿版 */
+@media (max-width: 1180px){
+  #footerForm.horizontal-form.center-form{
+    grid-template-columns: minmax(220px,1fr) minmax(220px,1fr);
+  }
+  #footerForm .btn{
+    grid-column: 1 / -1;
+    justify-self: stretch;
+  }
+}
+
+/* 768px 以下：單欄直排，按鈕滿版 */
+@media (max-width: 768px){
+  #footerForm.horizontal-form.center-form{ grid-template-columns: 1fr; }
+  #footerForm .btn{ grid-column: 1 / -1; width: 100%; }
+}
+
+.footer-cta-section .hero-form-card {
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.16);
+  border: 1px solid #E9EFFB;
+  padding: 16px;
+  max-width: 1120px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: box-shadow .2s;
+  position: relative;
+  top: 0;
+  margin-top: 12px;
+  overflow: hidden;
+}
+
+/* 1024px 以下：表單欄位更寬 */
+@media (max-width: 1024px) {
+  .footer-cta-section .hero-form-card { border-radius: 20px; top: 16px; padding: 16px; }
+  .footer-cta-section .horizontal-form.center-form { flex-wrap: wrap; gap: 12px; }
+  .footer-cta-section .h-field { flex: 1 1 260px; min-width: 0; }
+}
+
+/* 900px 以下：卡片縮小內距 */
+@media (max-width: 900px){
+  .footer-cta-section .hero-form-card { 
+    padding: 14px; 
+    border-radius: 16px; 
+  }
+}
+
+/* 768px 以下：表單直排 */
+@media (max-width: 768px) {
+  .footer-cta-section .horizontal-form.center-form { flex-direction: column; align-items: stretch; }
+  .footer-cta-section .h-field { width: 100%; margin: 0; }
+  .footer-cta-section .horizontal-form .btn { width: 100%; align-self: stretch; }
 }
 
 .footer-info-section {
@@ -308,69 +403,6 @@
   color: #64798A;
 }
 
-/* ===== Form 設計樣式：上下排列欄位 ===== */
-.footer-card .form-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 24px;
-  align-items: flex-start;
-  justify-content: space-between;
-}
-
-.footer-card .form-grid > div {
-  display: flex;
-  flex-direction: column;
-  flex: 1 1 200px;
-  min-width: 180px;
-}
-
-.footer-card .form-grid label {
-  font-weight: 600;
-  font-size: 14px;
-  color: #1F2937;
-  margin-bottom: 4px;
-}
-
-.footer-card .form-grid input {
-  padding: 12px 16px;
-  font-size: 16px;
-  border: 1px solid #DCE3ED;
-  border-radius: 12px;
-}
-
-.footer-card .form-grid button {
-  height: 52px;                 /* ✅ 關鍵：與 input 欄位一致 */
-  padding: 0 24px;
-  line-height: 1;               /* 避免按鈕內文太高或擠壓 */
-  white-space: nowrap;
-  border: none;
-  border-radius: 999px;          /* 可以微調圓角，不影響對齊 */
-  background: linear-gradient(90deg, #009FB6, #027AB9);
-  color: #FFFFFF;
-  font-weight: 600;
-  font-size: 16px;
-  box-shadow: 0 8px 24px rgba(2, 122, 185, 0.24);
-  cursor: pointer;
-  align-self: flex-end;         /* ✅ 如果按鈕掉下去就加這行 */
-}
-.footer-card .form-grid button:hover {
-  background: linear-gradient(90deg, #00BEE3, #0286C9);
-  transform: scale(1.04);
-  box-shadow: 0 8px 24px rgba(2, 122, 185, 0.32);
-  transition: all 0.25s ease-in-out;
-}
-
-
-
-.footer-card .form-grid .caption {
-  grid-column: 1 / 3;           /* 橫跨前兩欄 */
-  grid-row: 2;                  /* 第二行 */
-  margin-top: 0;
-  font-size: 13px;
-  color: var(--ink-dim, #64798A);
-  text-align: left;
-  align-self: center;           /* 改為置中對齊，讓文字往上 */
-}
 
 #fSuccess,
 #fFail {
@@ -470,7 +502,7 @@ body { overflow-x: hidden; }
 /* 修掉舊 flex 設定的副作用（邊距/對齊） */
 #heroForm .h-field{ min-width: 0; margin: 0; }
 #heroForm .btn{
-  align-self: stretch !important;         /* 蓋掉舊的 align-self:flex-end */
+  align-self: end !important;             /* 置底對齊 */
   height: 52px;
   white-space: nowrap;
 }
@@ -508,70 +540,6 @@ body { overflow-x: hidden; }
   .h1{ font-size: 30px; line-height: 38px; }
 }
 
-/* 用 Grid 取代 flex-wrap，避免按鈕「掉半格」或靠右對不齊 */
-.footer-card .form-grid{
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0,1fr)); /* 第一行：3 欄輸入 */
-  grid-template-rows: auto auto; /* 兩行 */
-  gap: 16px;
-  align-items: end;
-}
-
-/* 解除舊設定造成的擠壓 */
-.footer-card .form-grid > div{ min-width: 0; }
-.footer-card .form-grid button{
-  grid-column: 3;               /* 第三欄位置 */
-  grid-row: 2;                  /* 第二行 */
-  justify-self: end;
-  height: 44px;
-}
-
-/* 平板：2 欄，Phone和按鈕在第二行 */
-@media (max-width: 1024px) and (min-width: 769px){
-  .footer-card .form-grid{
-    grid-template-columns: repeat(2, minmax(0,1fr));
-    grid-template-rows: auto auto auto; /* 3 行 */
-  }
-  .footer-card .form-grid > div:nth-child(3) { /* Phone 欄位 */
-    grid-column: 1;
-    grid-row: 2;
-  }
-  .footer-card .form-grid button{
-    grid-column: 2;
-    grid-row: 2;
-    justify-self: end;
-  }
-  .footer-card .form-grid .caption{
-    grid-column: 1 / -1;
-    grid-row: 3;
-    text-align: center;
-  }
-}
-
-/* 手機：單欄直排，重新排序 */
-@media (max-width: 768px){
-  .footer-card .form-grid{
-    grid-template-columns: 1fr;
-    grid-template-rows: auto auto auto auto auto; /* 5 行：Name, Email, Phone, 按鈕, 說明 */
-  }
-  .footer-card .form-grid button{
-    grid-column: 1;
-    grid-row: 4;                  /* 第四行：按鈕 */
-    justify-self: stretch;
-    width: 100%;
-    order: 4;
-  }
-  .footer-card .form-grid .caption{
-    grid-column: 1;
-    grid-row: 5;                  /* 第五行：說明 */
-    text-align: center;
-    order: 5;
-  }
-  /* 確保輸入欄位順序 */
-  .footer-card .form-grid > div:nth-child(1) { order: 1; } /* Name */
-  .footer-card .form-grid > div:nth-child(2) { order: 2; } /* Email */
-  .footer-card .form-grid > div:nth-child(3) { order: 3; } /* Phone */
-}
 
   </style>
 </head>
@@ -1126,30 +1094,27 @@ body { overflow-x: hidden; }
       <h2 class="h2" id="footer-title">Ready to Join TLI Connect?</h2>
       <p class="body-m">Leave your info and we’ll send you full plan details within one business day.</p>
     </div>
-    <div class="card-form footer-card" role="form" aria-labelledby="footer-title">
-      <form id="footerForm" novalidate>
-        <div class="form-grid">
-          <div>
-            <label class="label" for="fName">Name<span style="color:var(--gold)">*</span></label>
-            <input id="fName" name="name" type="text" placeholder="Your name" required />
-            <div class="error-msg" id="fNameErr">Please enter your name.</div>
-          </div>
-          <div>
-            <label class="label" for="fEmail">Email<span style="color:var(--gold)">*</span></label>
-            <input id="fEmail" name="email" type="email" placeholder="you@example.com" required />
-            <div class="error-msg" id="fEmailErr">Please enter a valid email address.</div>
-          </div>
-          <div>
-            <label class="label" for="fPhone">Phone <span class="caption" aria-hidden="true">(optional)</span></label>
-            <input id="fPhone" name="phone" type="tel" placeholder="+886 912 345 678" />
-            <div class="error-msg" id="fPhoneErr">Please enter numbers only or include + / - / ( ).</div>
-          </div>
-          <button class="btn" type="submit">Free Consultation</button>
-          <div class="caption">We'll get back to you within 1–2 business days. Your information is kept strictly confidential.</div>
-          <div class="success" id="fSuccess">Thanks! We’ll contact you within 1–2 business days.</div>
-          <div class="fail" id="fFail">Sorry, something went wrong. Please try again later.</div>
+    <div class="hero-form-card">
+      <form id="footerForm" class="horizontal-form center-form" novalidate>
+        <div class="h-field">
+          <label for="fName" class="h-label">Name<span style="color:var(--gold)">*</span></label>
+          <input id="fName" name="name" type="text" placeholder="Your name" required aria-required="true" class="h-input" />
         </div>
+        <div class="h-field">
+          <label for="fEmail" class="h-label">Email<span style="color:var(--gold)">*</span></label>
+          <input id="fEmail" name="email" type="email" placeholder="you@example.com" required aria-required="true" class="h-input" />
+        </div>
+        <div class="h-field">
+          <label for="fPhone" class="h-label">Phone <span class="caption" aria-hidden="true">(optional)</span></label>
+          <input id="fPhone" name="phone" type="tel" placeholder="+886 912 345 678" class="h-input" />
+        </div>
+        <button class="btn" type="submit" aria-label="Submit contact form">Free Consultation</button>
       </form>
+      <div class="caption" style="margin: 12px 0 0 0; text-align:center;">
+        We'll get back to you within 1–2 business days. Your information is kept strictly confidential.
+      </div>
+      <div class="success" id="fSuccess">Thanks! We'll contact you within 1–2 business days.</div>
+      <div class="fail" id="fFail">Sorry, something went wrong. Please try again later.</div>
     </div>
   </div>
 </section>
